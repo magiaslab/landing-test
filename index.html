@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneVision Livorno - Servizi Video Professionali con Droni</title>
+    <meta name="description" content="Servizi professionali di realizzazione video con droni nella provincia di Livorno. Aerial cinematography, riprese aeree, eventi e promozioni immobiliari.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: #ffffff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff3cd;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579829366248-204fe8413f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ff6b35;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info i {
+            margin-right: 0.5rem;
+            color: #fff3cd;
+        }
+
+        .form-container {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ffffff, #f8f9fa);
+            color: #ff6b35;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-drone"></i>
+                DroneVision Livorno
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servizi">Servizi</a></li>
+                    <li><a href="#galleria">Galleria</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Riprese Aeree Professionali</h1>
+            <p>Servizi di realizzazione video con droni nella provincia di Livorno. Trasformiamo la tua visione in immagini mozzafiato.</p>
+            <a href="#contatti" class="cta-button">Richiedi Preventivo Gratuito</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servizi" class="services">
+        <div class="container">
+            <h2 class="section-title">I Nostri Servizi</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Promozionali</h3>
+                    <p>Realizziamo video aerei per promuovere la tua attività, evento o progetto immobiliare con qualità cinematografica.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Immobiliare</h3>
+                    <p>Riprese aeree per agenzie immobiliari, cantieri e progetti edilizi per mostrare le proprietà da una prospettiva unica.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Eventi e Cerimonie</h3>
+                    <p>Documentiamo matrimoni, eventi aziendali e manifestazioni con riprese aeree che catturano l'atmosfera speciale.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Industriale</h3>
+                    <p>Ispezioni aeree, monitoraggio cantieri e documentazione di progetti industriali con precisione professionale.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Turismo e Territorio</h3>
+                    <p>Video promozionali per strutture ricettive, aree naturali e attrazioni turistiche della provincia di Livorno.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Fotografia Aerea</h3>
+                    <p>Scatti fotografici aerei di alta qualità per cataloghi, brochure e materiale promozionale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galleria" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galleria Lavori</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ripresa aerea costa">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vista aerea città">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paesaggio naturale">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cantiere edile">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Evento aziendale">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proprietà immobiliare">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contatti" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Richiedi Informazioni</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contattaci</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Provincia di Livorno, Toscana</p>
+                    <p><i class="fas fa-phone"></i> +39 333 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@dronevisionlivorno.it</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9:00-18:00</p>
+                    <p><i class="fas fa-certificate"></i> Pilota ENAC certificato</p>
+                    <p><i class="fas fa-shield-alt"></i> Assicurazione RC professionale</p>
+                </div>
+                <div class="form-container">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nome">Nome e Cognome *</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Telefono</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        <div class="form-group">
+                            <label for="servizio">Tipo di Servizio *</label>
+                            <select id="servizio" name="servizio" required>
+                                <option value="">Seleziona un servizio</option>
+                                <option value="video-promozionale">Video Promozionale</option>
+                                <option value="immobiliare">Servizio Immobiliare</option>
+                                <option value="eventi">Eventi e Cerimonie</option>
+                                <option value="industriale">Servizio Industriale</option>
+                                <option value="turismo">Turismo e Territorio</option>
+                                <option value="fotografia">Fotografia Aerea</option>
+                                <option value="altro">Altro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="luogo">Luogo di Ripresa</label>
+                            <input type="text" id="luogo" name="luogo" placeholder="Es: Livorno, Piombino, Cecina...">
+                        </div>
+                        <div class="form-group">
+                            <label for="data">Data Preferita</label>
+                            <input type="date" id="data" name="data">
+                        </div>
+                        <div class="form-group">
+                            <label for="messaggio">Dettagli del Progetto *</label>
+                            <textarea id="messaggio" name="messaggio" placeholder="Descrivi il tuo progetto, le tue esigenze e qualsiasi dettaglio importante..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Invia Richiesta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 DroneVision Livorno. Tutti i diritti riservati.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling per i link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Gestione del form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Raccolta dati del form
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulazione invio (qui andrebbe integrato con un backend)
+            alert('Grazie per la tua richiesta! Ti contatteremo al più presto per discutere del tuo progetto.');
+            
+            // Reset del form
+            this.reset();
+        });
+
+        // Animazione header al scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 107, 53, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
